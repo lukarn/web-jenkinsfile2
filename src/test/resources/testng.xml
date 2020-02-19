@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test suite Login">
+    <!--
+    <listeners>
+        <listener class-name="utilities.ListenerManager" />
+    </listeners>
+    -->
+    <test verbose="3" name="Login">
+        <classes>
+
+            <!-- comments here-->
+            <class name="tests.TestLogIn"/>
+
+        </classes>
+    </test>
+
+
+
+</suite>
