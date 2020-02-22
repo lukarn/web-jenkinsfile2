@@ -45,10 +45,10 @@ public class ListenerManager extends TestListenerAdapter {
         {
             ts = (TakesScreenshot) TestLogIn.driver;
         }
-//        else if (testClassSelect.equalsIgnoreCase("[TestClass name=class tests.TestGrafik]"))
-//        {
-//            ts = (TakesScreenshot) TestGrafik.driver;
-//        }
+        else if (testClassSelect.equalsIgnoreCase("[TestClass name=class tests.TestMainTasks]"))
+        {
+            ts = (TakesScreenshot) TestMainTasks.driver;
+        }
 
         else
         {

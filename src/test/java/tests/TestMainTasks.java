@@ -6,13 +6,12 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.MainPage;
 import pages.BasePage;
-
+import pages.MainPage;
 import utilities.DriverManager;
 
 
-public class TestLogIn
+public class TestMainTasks
 {
     public static WebDriver driver;
 
@@ -71,6 +70,7 @@ public class TestLogIn
         }
     }
 
+    //  , dependsOnMethods = { "loginCorrect" }
     //  , priority=1
     //  , enabled = false
     @Test(dataProvider="getData", enabled = false)
@@ -91,61 +91,6 @@ public class TestLogIn
         Assert.assertTrue(basePage.isAt(envTimeoutIsAt), "----------BasePage not loaded!");
     }
 
-//    @Test(dataProvider="getData")
-//    public void loginIncorrectUser(int p1, String p2, String p3) {
-//        launch(p1, p2, p3);
-//
-//        basePage.setLoginInput("IncorrectUser")
-//                .setPasswordInput(envLoginPassword)
-//                .setZalogujButton();
-//
-//        Assert.assertTrue(basePage.loginError(), "----------Can not see login error info after incorrect login data");
-//    }
-
-//    @Test(dataProvider="getData")
-//    public void loginIncorrectUserAndPassword(int p1, String p2, String p3) {
-//        launch(p1, p2, p3);
-//
-//        basePage.setLoginInput("IncorrectUser")
-//                .setPasswordInput("IncorrectPassword")
-//                .setZalogujButton();
-//
-//        Assert.assertTrue(basePage.loginError(), "----------Can not see login error info after incorrect login data");
-//    }
-
-//    @Test(dataProvider="getData")
-//    public void loginNoUserAndPassword(int p1, String p2, String p3) {
-//        launch(p1, p2, p3);
-//
-//        basePage.setLoginInput("")
-//                .setPasswordInput("")
-//                .setZalogujButton();
-//
-//        Assert.assertTrue(basePage.loginError(), "----------Can not see login error info after incorrect login data");
-//    }
-
-//    @Test(dataProvider="getData")
-//    public void loginNoPassword(int p1, String p2, String p3) {
-//        launch(p1, p2, p3);
-//
-//        basePage.setLoginInput(envLoginLogin)
-//                .setPasswordInput("")
-//                .setZalogujButton();
-//
-//        Assert.assertTrue(basePage.loginError(), "----------Can not see login error info after incorrect login data");
-//    }
-
-    @Test(dataProvider="getData")
-    public void loginIncorrectPassword(int p1, String p2, String p3) {
-        launch(p1, p2, p3);
-
-        basePage.setLoginInput(envLoginLogin)
-                .setPasswordInput("IncorrectPassword")
-                .setZalogujButton();
-
-        Assert.assertTrue(basePage.loginError(), "----------Can not see login error info after incorrect login data");
-    }
-
     @Test(dataProvider="getData")
     public void loginCorrect(int p1, String p2, String p3) {
         launch(p1, p2, p3);
@@ -156,11 +101,14 @@ public class TestLogIn
 
         Assert.assertTrue(mainPage.isAt(envTimeoutIsAt), "----------Log in fail - you are not on main page");
 
-//        Assert.fail("---------->>>>>>>>>>>>Fail test<<<<<<<<<<<<<");
-
     }
 
+    @Test(dataProvider="getData", priority=2, dependsOnMethods = { "loginCorrect" })
+    public void work(int p1, String p2, String p3) {
+        loginCorrect(p1, p2, p3);
 
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>sasasa");
+    }
 
 
 }

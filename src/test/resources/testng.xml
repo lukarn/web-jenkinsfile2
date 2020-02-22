@@ -10,7 +10,9 @@
         <classes>
 
             <!-- comments here-->
-            <class name="tests.TestLogIn"/>
+            <!--<class name="tests.TestLogIn"/>-->
+            <class name="tests.TestMainTasks"/>
+
 
         </classes>
     </test>
