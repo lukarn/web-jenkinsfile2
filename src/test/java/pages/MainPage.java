@@ -9,32 +9,32 @@ public class MainPage extends Page {
 
     @Override
     public boolean isAt(){
-        return this.wylogujButton.isDisplayed();
+        return this.fightButton.isDisplayed();
     }
 
 
-    @FindBy(xpath = "//*[contains(text(), 'Wyloguj') and contains(@href, 'wyloguj')]")
-    private WebElement wylogujButton;
+    @FindBy(css = "#taskButtonFight>a")
+    private WebElement fightButton;
 
-    @FindBy(xpath = "//*[contains(text(), 'hasło traci ważność')]")
-    private WebElement needNewPassText;
+//    @FindBy(xpath = "//*[contains(text(), 'hasło traci ważność')]")
+//    private WebElement needNewPassText;
 
     public MainPage(WebDriver driver)
     {
         super(driver);
     }
 
-    public boolean needNewPass()
-    {
-        try
-        {
-            wait.until(ExpectedConditions.elementToBeClickable(this.needNewPassText));
-            return this.needNewPassText.isDisplayed();
-        }
-        catch (Exception e)
-        {
-            return false;
-        }
-    }
+//    public boolean needNewPass()
+//    {
+//        try
+//        {
+//            wait.until(ExpectedConditions.elementToBeClickable(this.needNewPassText));
+//            return this.needNewPassText.isDisplayed();
+//        }
+//        catch (Exception e)
+//        {
+//            return false;
+//        }
+//    }
 
 }

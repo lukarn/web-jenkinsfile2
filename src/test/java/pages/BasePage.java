@@ -13,16 +13,16 @@ public class BasePage extends Page {
     }
 
 
-    @FindBy(xpath = "//*[contains(@value, 'Zaloguj')]")
+    @FindBy(css = "#bestForm>button[type='submit']")
     private WebElement zalogujButton;
 
-    @FindBy(id = "inp_log")
+    @FindBy(css = "#bestForm>input[name='login']")
     private WebElement loginInput;
 
-    @FindBy(id = "inp_pass")
+    @FindBy(css = "#bestForm>input[name='password']")
     private WebElement passwordInput;
 
-    @FindBy(xpath = "//*[contains(@id, 'blad_logowanie') and contains(text(), 'Błędne dane logowania')]")
+    @FindBy(css = ".testDivred")
     private WebElement loginErrorText;
 
     public BasePage(WebDriver driver)
@@ -39,13 +39,15 @@ public class BasePage extends Page {
     public BasePage setLoginInput(String text)
     {
         clickElement(this.loginInput);
-        loginInput.sendKeys(text);
+        this.loginInput.clear();
+        this.loginInput.sendKeys(text);
         return this;
     }
 
     public BasePage setPasswordInput(String text)
     {
         clickElement(this.passwordInput);
+        this.passwordInput.clear();
         this.passwordInput.sendKeys(text);
         return this;
     }

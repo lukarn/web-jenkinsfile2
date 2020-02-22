@@ -63,13 +63,6 @@ public class DriverManager {
             Assert.fail("---------Driver = null - problem during chrome init in DriverManager");
         }
 
-//        try {
-//            driver = new RemoteWebDriver(new URL("http://10.74.100.135:4444/wd/hub"), options);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            Assert.fail("---------Driver = null - problem during chrome init in DriverManager");
-//        }
-
         return driver;
     }
 
@@ -96,13 +89,6 @@ public class DriverManager {
             e.printStackTrace();
             Assert.fail("---------Driver = null - problem during firefox init in DriverManager");
         }
-
-//        try {
-//            driver = new RemoteWebDriver(new URL("http://10.74.100.135:4444/wd/hub"), options);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            Assert.fail("---------Driver = null - problem during firefox init in DriverManager");
-//        }
 
         return driver;
     }

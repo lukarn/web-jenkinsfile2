@@ -19,7 +19,7 @@ public class ListenerManager extends TestListenerAdapter {
 
     @Override
     public void onTestStart(ITestResult tr) {
-        log("Test Started....");
+        log("======================> Lets get test " + tr.getName() + tr.getTestClass() + " started....");
     }
 
     @Override

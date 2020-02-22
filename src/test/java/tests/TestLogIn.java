@@ -115,10 +115,31 @@ public class TestLogIn
     }
 
     @Test(dataProvider="getData", priority=1)
+    public void loginNoUserAndPassword(int p1, String p2, String p3) {
+        launch(p1, p2, p3);
+
+        basePage.setLoginInput("")
+                .setPasswordInput("")
+                .setZalogujButton();
+
+        Assert.assertTrue(basePage.loginError(), "----------Can not see login error info after incorrect login data");
+    }
+
+    @Test(dataProvider="getData", priority=2)
+    public void loginNoPassword(int p1, String p2, String p3) {
+        launch(p1, p2, p3);
+
+        basePage.setLoginInput(envLoginLogin)
+                .setPasswordInput("")
+                .setZalogujButton();
+
+        Assert.assertTrue(basePage.loginError(), "----------Can not see login error info after incorrect login data");
+    }
+
+    @Test(dataProvider="getData", priority=2)
     public void loginIncorrectPassword(int p1, String p2, String p3) {
         launch(p1, p2, p3);
 
-        BasePage basePage = new BasePage(driver);
         basePage.setLoginInput(envLoginLogin)
                 .setPasswordInput("IncorrectPassword")
                 .setZalogujButton();
@@ -136,7 +157,6 @@ public class TestLogIn
 
         Assert.assertTrue(mainPage.isAt(envTimeoutIsAt), "----------Log in fail - you are not on main page");
 
-        Assert.assertFalse(mainPage.needNewPass(), "---------->>>>>>>>>>>>Log in - OK,  but need to change pass<<<<<<<<<<<<<");
 //        Assert.fail("---------->>>>>>>>>>>>Fail test<<<<<<<<<<<<<");
 
     }
