@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -44,10 +45,32 @@ public abstract class Page {
 
         ((JavascriptExecutor)driver).executeScript("window.scrollTo(0,0);");
 
-        clickLocator.click();
+        for(int i=0; i<10000; i++) {
+            try {
+                Thread.sleep(1);
+                clickLocator.click();
+                i=10000;
+            } catch (Exception ignored) {
+            }
+        }
 
         System.out.println(" [OK]");
     }
+
+//    WebElement waitAndGetCssLocator(String dynCss)
+//    {
+//        WebElement dynLocator = null;
+//        for(int i=0; i<10000; i++) {
+//            try {
+//                Thread.sleep(1);
+//                dynLocator = driver.findElement(By.cssSelector(dynCss));
+//                WebDriverWait wait = new WebDriverWait(driver, 30);
+//                wait.until(ExpectedConditions.elementToBeClickable(dynLocator));
+//                i=10000;
+//            } catch (Exception ignored) {}
+//        }
+//        return dynLocator;
+//    }
 
 
 }

@@ -8,6 +8,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.BasePage;
 import pages.MainPage;
+import pages.TrainPage;
+import pages.WorkPage;
 import utilities.DriverManager;
 
 
@@ -33,6 +35,8 @@ public class TestMainTasks
     // Page Objects
     private BasePage basePage;
     private MainPage mainPage;
+    private WorkPage workPage;
+    private TrainPage trainPage;
 
 
     @DataProvider
@@ -87,6 +91,8 @@ public class TestMainTasks
         // Page Object - assign
         basePage = new BasePage(driver);
         mainPage = new MainPage(driver);
+        workPage = new WorkPage(driver);
+        trainPage = new TrainPage(driver);
 
         Assert.assertTrue(basePage.isAt(envTimeoutIsAt), "----------BasePage not loaded!");
     }
@@ -99,15 +105,64 @@ public class TestMainTasks
                 .setPasswordInput(envLoginPassword)
                 .setZalogujButton();
 
-        Assert.assertTrue(mainPage.isAt(envTimeoutIsAt), "----------Log in fail - you are not on main page");
+        Assert.assertTrue(mainPage.isAt(envTimeoutIsAt), "----------Log in fail - you are not on MainPage");
 
     }
 
-    @Test(dataProvider="getData", priority=2, dependsOnMethods = { "loginCorrect" })
+    @Test(dataProvider="getData", dependsOnMethods = { "loginCorrect" })
     public void work(int p1, String p2, String p3) {
         loginCorrect(p1, p2, p3);
 
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>sasasa");
+        try {
+            mainPage.setWorkTaskButton();
+        }
+        catch (Exception e)
+        {
+            mainPage.setMenuMyPlacesButton()
+                    .setMenuWorkButton();
+        }
+
+
+        Assert.assertTrue(workPage.isAt(envTimeoutIsAt), "----------Error - you are not on WorkPage");
+
+        if(!workPage.workCheck())
+        {
+            workPage.setWorkButton();
+            Assert.assertTrue(workPage.isAt(envTimeoutIsAt), "----------Error - you are not on WorkPage");
+        }
+
+        Assert.assertTrue(workPage.workCheck(), "----------Error - Can not read production results after work");
+
+
+    }
+
+    @Test(dataProvider="getData", dependsOnMethods = { "loginCorrect" })
+    public void train(int p1, String p2, String p3) {
+        loginCorrect(p1, p2, p3);
+
+        try {
+            mainPage.setTrainTaskButton();
+        }
+        catch (Exception e)
+        {
+            mainPage.setMenuMyPlacesButton()
+                    .setMenuTrainButton();
+        }
+
+
+        Assert.assertTrue(trainPage.isAt(envTimeoutIsAt), "----------Error - you are not on TrainPage");
+
+
+
+        if(!trainPage.trainCheck())
+        {
+            trainPage.setTrainButton();
+            Assert.assertTrue(trainPage.isAt(envTimeoutIsAt), "----------Error - you are not on TrainPage");
+        }
+
+        Assert.assertTrue(trainPage.trainCheck(), "----------Error - Can not read train countdown after training");
+
+
     }
 
 
