@@ -1,4 +1,4 @@
-web tests serum (with Jenkins)
+web tests serum (Jenkins with github, env. variables and e-mail notification)
 env. variables directly in Jenkins job
 
 important files:
