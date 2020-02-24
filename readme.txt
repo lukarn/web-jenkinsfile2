@@ -1,4 +1,4 @@
-web test exercises (Jenkins with github, env. variables and e-mail notification)
+web test exercises (Jenkins with github, env. variables)
 https://youtu.be/x0FrZZblecM
 env. variables directly in Jenkins job
 
