@@ -107,7 +107,7 @@ public class TestMainTasks
         Assert.assertTrue(mainPage.isAt(envTimeoutIsAt), "----------Log in fail - you are not on MainPage");
 
     }
-/*
+
     @Test(dataProvider="getData", dependsOnMethods = { "loginCorrect" })
     public void work(int p1, String p2, String p3) {
         loginCorrect(p1, p2, p3);
@@ -163,6 +163,6 @@ public class TestMainTasks
 
 
     }
-*/
+
 
 }
