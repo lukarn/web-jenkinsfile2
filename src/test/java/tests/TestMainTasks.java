@@ -98,7 +98,7 @@ public class TestMainTasks
     public void loginCorrect(int p1, String p2, String p3) {
         launch(p1, p2, p3);
 
-        Assert.fail(">>>>>>>>>>>>>>>>>>>>>>>>>test fail");
+//        Assert.fail(">>>>>>>>>>>>>>>>>>>>>>>>>test fail");
 
         basePage.setLoginInput(envLoginLogin)
                 .setPasswordInput(envLoginPassword)
