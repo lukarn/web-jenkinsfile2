@@ -64,7 +64,7 @@ public class ListenerManager extends TestListenerAdapter {
                 Date date = new Date();
 
                 //ScreenShot
-                FileUtils.copyFile(srcFile, new File(System.getProperty("user.dir") + "\\screenShots\\NOK" + tr.getName() + dateFormat.format(date) + ".png"));
+                FileUtils.copyFile(srcFile, new File(System.getProperty("user.dir") + "\\screenShots\\NOK_" + dateFormat.format(date) + tr.getName() + ".png"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
