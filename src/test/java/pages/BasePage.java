@@ -9,7 +9,7 @@ public class BasePage extends Page {
 
     @Override
     public boolean isAt(){
-        return this.loginButton.isDisplayed();
+        return this.loginInput.isDisplayed();
     }
 
     @FindBy(css = "button.foundation-style.button.foundationButton[type='submit'][value='Login']")
@@ -23,11 +23,23 @@ public class BasePage extends Page {
 
     //"form > input.required.valid[name='password']"
     //<input type="password" class="required valid" style="font-size: 14px; margin-top: 1em; padding: 0.3em !important; width: 100% !important; border-radius: 3px;" placeholder="hasło" name="password">
-    @FindBy(css = "form > input.required.valid[name='password']")
+    //"form#bestForm > input[name='password']"
+    //css = "form > input.required.valid[name='password']"
+    @FindBy(css = "form#bestForm > input[name='password']")
     private WebElement passwordInput;
 
     @FindBy(css = ".testDivred")
     private WebElement loginErrorText;
+
+
+    //<form method="POST" action="login.html" class="foundation-style" id="bestForm" style="display:inline-block;width:auto;">
+    //            <input id="registeredPlayerLogin" type="text" placeholder="login" name="login">
+    //            <input type="password" placeholder="hasło" name="password">
+    //            <button class="foundation-style button foundationButton" type="submit" value="Login">
+    //                Zaloguj się
+    //            </button>
+    //            <input type="hidden" name="facebookAdId" value="">
+    //        </form>
 
     public BasePage(WebDriver driver)
     {
@@ -42,7 +54,7 @@ public class BasePage extends Page {
 
     public BasePage setLoginButton()
     {
-        clickElement(this.loginButton);
+        //clickElement(this.loginButton);
         return this;
     }
 
