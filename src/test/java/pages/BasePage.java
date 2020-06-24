@@ -9,16 +9,19 @@ public class BasePage extends Page {
 
     @Override
     public boolean isAt(){
-        return this.zalogujButton.isDisplayed();
+        return this.loginButton.isDisplayed();
     }
 
-    @FindBy(css = "#login_section_btn")
+    @FindBy(css = "button.foundation-style.button.foundationButton[type='submit'][value='Login']")
     private WebElement zalogujButton;
 
-    @FindBy(css = "#bestForm>input[name='login']")
+    @FindBy(id = "login_section_btn")
+    private WebElement loginButton;
+
+    @FindBy(id = "registeredPlayerLogin")
     private WebElement loginInput;
 
-    @FindBy(css = "#bestForm>input[name='password']")
+    @FindBy(id = "password")
     private WebElement passwordInput;
 
     @FindBy(css = ".testDivred")
@@ -33,6 +36,12 @@ public class BasePage extends Page {
     {
         clickElement(this.zalogujButton);
         new MainPage(driver);
+    }
+
+    public BasePage setLoginButton()
+    {
+        clickElement(this.loginButton);
+        return this;
     }
 
     public BasePage setLoginInput(String text)

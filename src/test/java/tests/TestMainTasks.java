@@ -133,7 +133,8 @@ public class TestMainTasks
 
 //        Assert.fail(">>>>>>>>>>>>>>>>>>>>>>>>>test fail");
 
-        basePage.setLoginInput(envLoginLogin)
+        basePage.setLoginButton()
+                .setLoginInput(envLoginLogin)
                 .setPasswordInput(envLoginPassword)
                 .setZalogujButton();
 
