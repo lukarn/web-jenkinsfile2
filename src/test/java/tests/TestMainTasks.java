@@ -73,8 +73,8 @@ public class TestMainTasks
     public Object[][] getData()
     {
         return new Object[][]{
-                {1, envLoginPage, "chrome"},
-                //{2, envLoginPage, "firefox"},
+                //{1, envLoginPage, "chrome"},
+                {2, envLoginPage, "firefox"},
         };
     }
 
