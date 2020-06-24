@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -30,7 +31,11 @@ public class BasePage extends Page {
     //<input type="password" class="required valid" style="font-size: 14px; margin-top: 1em; padding: 0.3em !important; width: 100% !important; border-radius: 3px;" placeholder="hasło" name="password">
     //"form#bestForm > input[name='password']"
     //css = "form > input.required.valid[name='password']"
-    @FindBy(css = "form#bestForm > input[name='password']")
+    //<input type="password" value="" placeholder="Hasło" maxlength="32" minlength="6" class="required valid" name="password" id="pwdField2" style="font-size: 14px;">
+    @FindAll({
+            @FindBy(css = "form > input.required.valid[name='password']")
+            @FindBy(css = "form#bestForm > input[name='password']")
+    })
     private WebElement passwordInput;
 
     @FindBy(css = ".testDivred")
