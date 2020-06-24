@@ -21,7 +21,9 @@ public class BasePage extends Page {
     @FindBy(id = "registeredPlayerLogin")
     private WebElement loginInput;
 
-    @FindBy(css = "input[type='password']")
+    //"form > input.required.valid[name='password']"
+    //<input type="password" class="required valid" style="font-size: 14px; margin-top: 1em; padding: 0.3em !important; width: 100% !important; border-radius: 3px;" placeholder="hasło" name="password">
+    @FindBy(css = "form > input.required.valid[name='password']")
     private WebElement passwordInput;
 
     @FindBy(css = ".testDivred")
