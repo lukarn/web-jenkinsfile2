@@ -60,25 +60,35 @@ public class DriverManager {
     {
         HashMap<String, Object> chromePrefs = new HashMap<>();
         chromePrefs.put("profile.default_content_settings.popups", 0);
-        chromePrefs.put("download.default_directory", System.getProperty("user.dir") + "\\screenShots");
+        chromePrefs.put("download.default_directory", System.getProperty("user.dir") + "/screenShots");
         ChromeOptions options = new ChromeOptions();
         options.setExperimentalOption("prefs", chromePrefs);
-
         options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--window-size=1920,1080");
-        options.addArguments("--disable-gpu");
+        options.addArguments("--window-size=1920,1480");
         options.addArguments("--headless");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-gpu");
 
+
+        //options.addArguments("--version=83.0.4103.61");
+
+        //capabilities: Capabilities {applicationName: , browserName: chrome, maxInstances: 1, platform: LINUX, platformName: LINUX, seleniumProtocol: WebDriver, server:CONFIG_UUID: b688b9c4-3d11-4f95-b19f-d59..., version: 83.0.4103.61}
 
         WebDriver driver = null;
 
+//        try {
+//            driver = new RemoteWebDriver(new URL("http://localhost:5555/wd/hub"), options);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            Assert.fail("---------Driver = null - problem during chrome init in DriverManager");
+//        }
+
+
         try {
             driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
-            getLocalHost();
         } catch (Exception e) {
             e.printStackTrace();
-            Assert.fail("---------Driver = null - problem during chrome init in DriverManager");
+            Assert.fail("---------Driver = null - problem during chrome init in DriverManager; check if your webdriver server is working properly and its URL address (e.g. port, versions) in DriverManager.java");
         }
 
         return driver;
