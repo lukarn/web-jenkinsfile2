@@ -27,11 +27,6 @@ public class BasePage extends Page {
     @FindBy(id = "registeredPlayerLogin")
     private WebElement loginInput;
 
-    //"form > input.required.valid[name='password']"
-    //<input type="password" class="required valid" style="font-size: 14px; margin-top: 1em; padding: 0.3em !important; width: 100% !important; border-radius: 3px;" placeholder="hasło" name="password">
-    //"form#bestForm > input[name='password']"
-    //css = "form > input.required.valid[name='password']"
-    //<input type="password" value="" placeholder="Hasło" maxlength="32" minlength="6" class="required valid" name="password" id="pwdField2" style="font-size: 14px;">
     @FindAll({
             @FindBy(css = "form > input.required.valid[name='password']"),
             @FindBy(css = "form#bestForm > input[name='password']")
@@ -41,15 +36,6 @@ public class BasePage extends Page {
     @FindBy(css = ".testDivred")
     private WebElement loginErrorText;
 
-
-    //<form method="POST" action="login.html" class="foundation-style" id="bestForm" style="display:inline-block;width:auto;">
-    //            <input id="registeredPlayerLogin" type="text" placeholder="login" name="login">
-    //            <input type="password" placeholder="hasło" name="password">
-    //            <button class="foundation-style button foundationButton" type="submit" value="Login">
-    //                Zaloguj się
-    //            </button>
-    //            <input type="hidden" name="facebookAdId" value="">
-    //        </form>
 
     public BasePage(WebDriver driver)
     {
