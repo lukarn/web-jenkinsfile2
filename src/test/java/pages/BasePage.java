@@ -12,8 +12,7 @@ public class BasePage extends Page {
         return this.zalogujButton.isDisplayed();
     }
 
-
-    @FindBy(css = "#bestForm>button[type='submit']")
+    @FindBy(css = "#login_section_btn")
     private WebElement zalogujButton;
 
     @FindBy(css = "#bestForm>input[name='login']")
