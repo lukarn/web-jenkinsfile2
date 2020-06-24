@@ -21,7 +21,7 @@ public class BasePage extends Page {
     @FindBy(id = "registeredPlayerLogin")
     private WebElement loginInput;
 
-    @FindBy(id = "password")
+    @FindBy(css = "input[type='password']")
     private WebElement passwordInput;
 
     @FindBy(css = ".testDivred")
