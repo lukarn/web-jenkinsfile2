@@ -54,7 +54,11 @@ public class BasePage extends Page {
 
     public BasePage setLoginButton()
     {
-        //clickElement(this.loginButton);
+        try {
+            clickElement(this.loginButton);
+        }catch (Exception e){
+            System.out.println(">>>>>>> LOGIN button not displayed");
+        }
         return this;
     }
 
