@@ -33,7 +33,7 @@ public class BasePage extends Page {
     //css = "form > input.required.valid[name='password']"
     //<input type="password" value="" placeholder="Hasło" maxlength="32" minlength="6" class="required valid" name="password" id="pwdField2" style="font-size: 14px;">
     @FindAll({
-            @FindBy(css = "form > input.required.valid[name='password']")
+            @FindBy(css = "form > input.required.valid[name='password']"),
             @FindBy(css = "form#bestForm > input[name='password']")
     })
     private WebElement passwordInput;
