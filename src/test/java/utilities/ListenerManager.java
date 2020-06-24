@@ -39,39 +39,37 @@ public class ListenerManager extends TestListenerAdapter {
 
         String testClassSelect = tr.getTestClass().toString();
 
-        //select Test from package tests (webdriver)
-        TakesScreenshot ts;
-        if(testClassSelect.equalsIgnoreCase("[TestClass name=class tests.TestLogIn]"))
-        {
-            ts = (TakesScreenshot) TestLogIn.driver;
-        }
-        else if (testClassSelect.equalsIgnoreCase("[TestClass name=class tests.TestMainTasks]"))
-        {
-            ts = (TakesScreenshot) TestMainTasks.driver;
-        }
-
-        else
-        {
-            System.out.println("Test method not recognized in ListenerManager screenShot- should be : " + testClassSelect);
-            ts = null;   //just for wrong init - correct to your method
-        }
-
-        if(ts != null) {
-            File srcFile = ts.getScreenshotAs(OutputType.FILE);
-
-            try {
-                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-                Date date = new Date();
-
-                //ScreenShot
-                FileUtils.copyFile(srcFile, new File(System.getProperty("user.dir") + "\\screenShots\\NOK_" + dateFormat.format(date) + tr.getName() + ".png"));
-            } catch (IOException e) {
-                e.printStackTrace();
+        try {
+            //select Test from package tests (webdriver)
+            TakesScreenshot ts;
+            if (testClassSelect.equalsIgnoreCase("[TestClass name=class tests.TestLogIn]")) {
+                ts = (TakesScreenshot) TestLogIn.driver;
+            } else if (testClassSelect.equalsIgnoreCase("[TestClass name=class tests.TestMainTasks]")) {
+                ts = (TakesScreenshot) TestMainTasks.driver;
+            } else {
+                System.out.println("Test method not recognized in ListenerManager screenShot- should be : " + testClassSelect);
+                ts = null;   //just for wrong init - correct to your method
             }
-        }
-        else
-        {
-            System.out.println("No driver - no photo.");
+
+            if (ts != null) {
+                File srcFile = ts.getScreenshotAs(OutputType.FILE);
+
+                try {
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+                    Date date = new Date();
+
+                    //ScreenShot
+                    FileUtils.copyFile(srcFile, new File(System.getProperty("user.dir") + "\\screenShots\\NOK_" + dateFormat.format(date) + tr.getName() + ".png"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("No driver - no photo.");
+            }
+        }catch (Exception e) {
+            System.out.println("Fatal exception in listener manager - e.g. problems with session or webdriver server");
+            System.out.println(">>>>>>>>>>>>>>>>>Error trace: ");
+            e.printStackTrace();
         }
 
         System.out.println(".....");

@@ -7,12 +7,27 @@ import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 
+import java.net.InetAddress;
 import java.net.URL;
 import java.util.HashMap;
 
 public class DriverManager {
 
     private WebDriver driver;
+
+    private void getLocalHost() {
+        InetAddress ip;
+        try {
+            ip = InetAddress.getLocalHost();
+            System.out.println(">>>>>>>>>>Your current IP address : " + ip.getHostAddress());
+            System.out.println(">>>>>>>>>>Your current Hostname : " + ip.getHostName());
+            //return ip.getHostAddress();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            //return null;
+        }
+    }
 
     public DriverManager(WebDriver driver)
     {
@@ -48,16 +63,19 @@ public class DriverManager {
         chromePrefs.put("download.default_directory", System.getProperty("user.dir") + "\\screenShots");
         ChromeOptions options = new ChromeOptions();
         options.setExperimentalOption("prefs", chromePrefs);
-        options.addArguments("--headless");
+
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--window-size=1920,1080");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--headless");
 
 
         WebDriver driver = null;
 
         try {
-            driver = new RemoteWebDriver(new URL("http://localhost:5555/wd/hub"), options);
+            driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
+            getLocalHost();
         } catch (Exception e) {
             e.printStackTrace();
             Assert.fail("---------Driver = null - problem during chrome init in DriverManager");
@@ -76,15 +94,16 @@ public class DriverManager {
         myProfile.setPreference("browser.download.manager.showWhenStarting", false);
         myProfile.setPreference("browser.download.dir", System.getProperty("user.dir") + "\\screenShots");
         options.setProfile(myProfile);
-        options.setHeadless(true);
+
         options.addArguments("--width=1920");
         options.addArguments("--height=1080");
-
+        options.setHeadless(true);
 
         WebDriver driver = null;
 
         try {
-            driver = new RemoteWebDriver(new URL("http://localhost:5555/wd/hub"), options);
+            driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
+            getLocalHost();
         } catch (Exception e) {
             e.printStackTrace();
             Assert.fail("---------Driver = null - problem during firefox init in DriverManager");

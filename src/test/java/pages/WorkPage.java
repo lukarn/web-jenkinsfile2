@@ -55,4 +55,39 @@ public class WorkPage extends Page {
         }
     }
 
+
+
+//    public void getJobOfferDetailsList(){
+//        try{
+//            System.out.println("Job Offer Details List: >>>");
+//            System.out.println(this.jobOfferDetailsList.getText());
+//            System.out.println("<<< End of Job Offer Details List");
+//
+//        }
+//        catch (Exception e)
+//        {
+//            System.out.println("Can not get Job Offer Details List [NOK]");
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    // boolean - to use with assert
+//    public boolean checkTextVisibilityInPageSource(String text){
+//        try
+//        {
+//            System.out.println("Searching... >>>" + text + "<<<");
+//            String bodyContent = this.jobOfferDetailsList.getText();
+//
+//            return bodyContent.contains(text);
+//
+//        }
+//        catch (Exception e)
+//        {
+//            System.out.println("Element >>>" + text + "<<< found: false [NOK]");
+//            e.printStackTrace();
+//            return false;
+//        }
+//
+//    }
+
 }
