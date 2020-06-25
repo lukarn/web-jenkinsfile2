@@ -10,7 +10,7 @@ public class BasePage extends Page {
 
     @Override
     public boolean isAt(){
-        return this.foundationForm.isDisplayed();
+        return this.loginInput.isDisplayed();
     }
 
 
