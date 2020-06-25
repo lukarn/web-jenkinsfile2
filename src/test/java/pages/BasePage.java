@@ -10,13 +10,13 @@ public class BasePage extends Page {
 
     @Override
     public boolean isAt(){
-        return this.loginInput.isDisplayed();
+        return this.bestBody.isDisplayed();
     }
 
 
 
-    @FindBy(id = "foundationForm")
-    private WebElement foundationForm;
+    @FindBy(id = "bestBody")
+    private WebElement bestBody;
 
     @FindBy(css = "button.foundation-style.button.foundationButton[type='submit'][value='Login']")
     private WebElement zalogujButton;
