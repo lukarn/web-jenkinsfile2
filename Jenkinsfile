@@ -11,8 +11,14 @@ pipeline {
                 bat 'docker version'
                 //echo 'Docker is running: '
                 bat 'docker version | findstr "Server"'
+                if (true) {
+                                                        echo 'if check - OK'
+                                                    }
+                if ('docker version | findstr "Server"') {
+                                        echo 'if - OK'
+                                    }
                 echo 'not found example: '
-                bat 'docker version | findstr "Serverrrr"'
+                //bat 'docker version | findstr "Serverrrr"'
                 bat 'docker-compose up -d' // Docker Selenium
             }
         }
