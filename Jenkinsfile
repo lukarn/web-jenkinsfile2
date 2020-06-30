@@ -8,7 +8,10 @@ pipeline {
 
         stage('Run selenium grid') {
             steps {
-                bat 'docker-compose up -d' // Uruchiomienie Docker Selenium
+                bat 'docker version'
+                echo 'Docker is running: '
+                bat 'echo $?'
+                bat 'docker-compose up -d' // Docker Selenium
             }
         }
 
