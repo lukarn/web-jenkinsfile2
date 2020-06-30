@@ -10,7 +10,9 @@ pipeline {
             steps {
                 bat 'docker version'
                 //echo 'Docker is running: '
-                bat 'Get-Process 'com.docker.proxy''
+                bat 'docker version | findstr "Server"'
+                echo 'not found example: '
+                bat 'docker version | findstr "Serverrrr"'
                 bat 'docker-compose up -d' // Docker Selenium
             }
         }
