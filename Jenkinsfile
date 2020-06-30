@@ -42,7 +42,8 @@ pipeline {
 
         stage('Tear down stage') {
             steps {
-                bat 'docker-compose down' // Uruchiomienie Docker Selenium
+                bat 'docker-compose down'
+                bat 'docker system prune -f'
             }
         }
 
