@@ -27,7 +27,7 @@ pipeline {
                     for (int i = 0; i < 2; i++) {
                     						bat 'docker version | findstr "Serverrrr" || PING localhost -n 3'
                     						try {
-                                            			bat 'docker version | findstr "Serverrrr" || PING localhost -n 3'
+                                            			bat 'docker version | findstr "Serverrrr"'
                                             			i=2
                                             			}
                                             		} catch (Exception e) {
