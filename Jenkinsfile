@@ -14,9 +14,11 @@ pipeline {
                 script{
                 if (true) {
                     echo 'if check - OK'
-                    bat 'docker version | findstr "Server" && if %errorlevel% EQU 0 (echo OK ) Else ( Echo ERROR FAILED &color CF )'
-                    bat 'docker version | findstr "Server" & if %errorlevel% EQU 0 (echo OK ) Else ( Echo ERROR FAILED &color CF )'
-
+                    //bat 'docker version | findstr "Server" && if %errorlevel% EQU 0 (echo OK ) Else ( Echo ERROR FAILED &color CF )'
+                    //bat 'docker version | findstr "Server" & if %errorlevel% EQU 0 (echo OK ) Else ( Echo ERROR FAILED &color CF )'
+                    //bat 'docker version | findstr "Server" & if %errorlevel% NEQ 0 (echo NOOOOOK ) Else ( Echo OKOKOK )'
+                    bat 'docker version | findstr "Serverrr"'
+                    bat 'if %errorlevel% NEQ 0 (timeout 10) Else ( Echo OKOKOK )'
                     }
 
                 if ('docker version | findstr "Server"') {
