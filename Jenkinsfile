@@ -20,7 +20,20 @@ pipeline {
                     //bat 'docker version | findstr "Serverrr"'
                     //bat 'docker version | findstr "Serverrr" || true'
                     //bat 'if %errorlevel% NEQ 0 (timeout 10) Else ( Echo OKOKOK )'
-                    bat 'docker version | findstr "Serverrrr" || PING localhost -n 20'
+                    //PING localhost -n 6 >NUL
+
+                    //bat 'docker version | findstr "Server" || PING localhost -n 10'
+
+                    for (int i = 0; i < 2; i++) {
+                    						bat 'docker version | findstr "Serverrrr" || PING localhost -n 3'
+                    						try {
+                                            			bat 'docker version | findstr "Serverrrr" || PING localhost -n 3'
+                                            			i=2
+                                            			}
+                                            		} catch (Exception e) {
+                                            			echo "Stage failed, but we continue"
+                                            		}
+                    					}
 
                     //bat 'if (docker version | findstr "Serverrrr") NEQ 0 (timeout 10) Else ( Echo OKOKOK )'
                     }
