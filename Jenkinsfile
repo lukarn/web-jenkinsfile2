@@ -23,7 +23,8 @@ pipeline {
                                     }
                 if ('docker version | findstr "Serverrrrr"') {
                                         echo 'if not found - OK - error level'
-                                        echo %errorlevel%
+                                        bat 'echo Hello ${errorlevel}'
+                                        //echo %errorlevel%
                                     }
 
                           }
