@@ -13,8 +13,11 @@ pipeline {
                 bat 'docker version | findstr "Server"'
                 script{
                 if (true) {
-                                                        echo 'if check - OK'
-                                                    }
+                    echo 'if check - OK'
+                    bat 'docker version | findstr "Server" && if %errorlevel% EQU 0 (echo OK ) Else ( Echo ERROR FAILED &color CF )'
+                    bat 'docker version | findstr "Server" & if %errorlevel% EQU 0 (echo OK ) Else ( Echo ERROR FAILED &color CF )'
+
+                    }
 
                 if ('docker version | findstr "Server"') {
                                         echo 'if - OK - error level'
