@@ -29,8 +29,9 @@ pipeline {
                     						try {
                                             			bat 'docker version | findstr "Serverrrr"'
                                             			i=2
-                                            			}
-                                            		} catch (Exception e) {
+
+                                            		}
+                                            		catch (Exception e) {
                                             			echo "Stage failed, but we continue"
                                             		}
                     					}
