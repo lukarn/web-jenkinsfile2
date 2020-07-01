@@ -20,7 +20,9 @@ pipeline {
                                         echo 'if - OK - error level'
                                         //bat 'errorLev = echo %errorlevel%'
                                         //bat 'echo $errorLev'
-                                        echo env[errorlevel]
+                                        //echo env[errorlevel]
+                                        println("Running job ${env.JOB_NAME}")
+                                        println(env.getProperty('JOB_NAME'))
 
                                         if(errorlevel=='1'){
                                             echo '1111111111111'
