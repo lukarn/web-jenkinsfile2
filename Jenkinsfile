@@ -20,7 +20,7 @@ pipeline {
                     //bat 'docker version | findstr "Serverrr"'
                     //bat 'docker version | findstr "Serverrr" || true'
                     //bat 'if %errorlevel% NEQ 0 (timeout 10) Else ( Echo OKOKOK )'
-                    bat 'docker version | findstr "Serverrrr" || timeout 20'
+                    bat 'docker version | findstr "Serverrrr" || PING localhost -n 20'
 
                     //bat 'if (docker version | findstr "Serverrrr") NEQ 0 (timeout 10) Else ( Echo OKOKOK )'
                     }
