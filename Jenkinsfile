@@ -18,8 +18,9 @@ pipeline {
                     //bat 'docker version | findstr "Server" & if %errorlevel% EQU 0 (echo OK ) Else ( Echo ERROR FAILED &color CF )'
                     //bat 'docker version | findstr "Server" & if %errorlevel% NEQ 0 (echo NOOOOOK ) Else ( Echo OKOKOK )'
                     //bat 'docker version | findstr "Serverrr"'
-                    bat 'docker version | findstr "Serverrr" || true'
-                    bat 'if %errorlevel% NEQ 0 (timeout 10) Else ( Echo OKOKOK )'
+                    //bat 'docker version | findstr "Serverrr" || true'
+                    //bat 'if %errorlevel% NEQ 0 (timeout 10) Else ( Echo OKOKOK )'
+                    bat 'docker version | findstr "Serverrrr" || timeout 20'
 
                     //bat 'if (docker version | findstr "Serverrrr") NEQ 0 (timeout 10) Else ( Echo OKOKOK )'
                     }
