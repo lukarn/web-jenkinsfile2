@@ -22,14 +22,14 @@ pipeline {
                                         //bat 'echo $errorLev'
                                         //echo env[errorlevel]
                                         println("Running job ${env.JOB_NAME}")
-                                        println(env.getProperty('JOB_NAME'))
+                                        println(env.getProperty('errorlevel'))
 
-                                        if(errorlevel=='1'){
-                                            echo '1111111111111'
-                                        }
-                                        if(errorLev=='0'){
-                                            echo '00000000000000'
-                                        }
+                                        //if(errorlevel=='1'){
+                                            //echo '1111111111111'
+                                        //}
+                                        //if(errorLev=='0'){
+                                            //echo '00000000000000'
+                                        //}
 
                                     }
                 if ('docker version | findstr "Serverrrrr"') {
