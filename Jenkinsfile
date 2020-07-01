@@ -23,8 +23,8 @@ pipeline {
                                             echo '1111111111111'
                                         }
                                         if(errorLev==0){
-                                                                                    echo '00000000000000'
-                                                                                }
+                                            echo '00000000000000'
+                                        }
 
                                     }
                 if ('docker version | findstr "Serverrrrr"') {
