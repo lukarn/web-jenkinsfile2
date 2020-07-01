@@ -18,7 +18,8 @@ pipeline {
 
                 if ('docker version | findstr "Server"') {
                                         echo 'if - OK - error level'
-                                        int errorLev = bat 'echo %errorlevel%'
+                                        String errorLev = bat 'echo %errorlevel%'
+                                        echo errorLev
                                         if(errorLev=='1'){
                                             echo '1111111111111'
                                         }
