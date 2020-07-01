@@ -20,7 +20,7 @@ pipeline {
                                         echo 'if - OK - error level'
                                         //bat 'errorLev = echo %errorlevel%'
                                         //bat 'echo $errorLev'
-                                        echo ${errorlevel}
+                                        echo ${env.errorlevel}
                                         if(errorlevel=='1'){
                                             echo '1111111111111'
                                         }
