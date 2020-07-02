@@ -41,7 +41,7 @@ public class TestLogIn
     {
         return new Object[][]{
                 {1, envLoginPage, "chrome"},
-//                {2, envLoginPage, "firefox"},
+                {2, envLoginPage, "firefox"},
         };
     }
 
