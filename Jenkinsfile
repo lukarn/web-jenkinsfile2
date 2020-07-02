@@ -11,7 +11,7 @@ pipeline {
 
                 script{
                     for (int i = 0; i < 50; i++) {
-                        bat 'docker version | findstr "Server" || PING localhost -n 10' //  > NUL
+                        bat 'docker version | findstr "Server" || PING localhost -n 10 > NUL'
                              try {
                                  bat 'docker version | findstr "Server"'
                                  i=50
