@@ -14,6 +14,7 @@ pipeline {
                     for (int i = 0; i < 50; i++) {
                         bat 'docker version | findstr "Server" || PING localhost -n 10 > NUL'
                              try {
+                                 echo 'Waiting for Docker'
                                  bat 'docker version | findstr "Server"'
                                  i=50
                                  }
