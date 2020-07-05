@@ -7,6 +7,13 @@ pipeline {
 
     stages {
 
+        stage('Clean workspace') {
+                steps {
+                    echo 'Cleaning workspace..'
+                    deleteDir()
+                }
+        }
+
         stage('Run selenium grid') {
             steps {
 
