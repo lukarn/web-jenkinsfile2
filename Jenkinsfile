@@ -7,10 +7,11 @@ pipeline {
 
     stages {
 
-        stage('Clean workspace') {
+        stage('Clean screenShots directory') {
                 steps {
-                    echo 'Cleaning workspace..'
-                    deleteDir()
+                    echo 'Cleaning screenShots directory..'
+                    bat 'rmdir /Q /S screenShots'
+                    bat 'mkdir screenShots'
                 }
         }
 
