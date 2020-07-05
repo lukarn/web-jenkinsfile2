@@ -26,6 +26,8 @@ public class TestMainTasks
 {
     public static WebDriver driver;
 
+    private int testNo = 0;
+
     //from Jenkins
     private String envLoginPage = System.getenv("LOGIN_PAGE");
     private String envLoginLogin = System.getenv("LOGIN_LOGIN");
@@ -129,6 +131,7 @@ public class TestMainTasks
 
     @Test(dataProvider="getData")
     public void loginCorrect(int p1, String p2, String p3) {
+        testNo++;
         launch(p1, p2, p3);
 
         basePage.setLoginButton()
@@ -138,12 +141,14 @@ public class TestMainTasks
 
         Assert.assertTrue(mainPage.isAt(envTimeoutIsAt), "----------Log in fail - you are not on MainPage");
 
-        // check shouts
-        System.out.println("Visible shouts count: " + mainPage.getShoutContainerText());
+        // check shouts only after 1st login
+        if(testNo==1) {
+            System.out.println("Visible shouts count: " + mainPage.getShoutContainerText());
 
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
-        System.out.println("Shout(s) with pattern found: " + mainPage.printShoutContainerWithText("Staff Team"));
+            System.out.println("Shout(s) with pattern found: " + mainPage.printShoutContainerWithText("Staff Team"));
+        }
 
     }
 
