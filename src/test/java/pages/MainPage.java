@@ -3,7 +3,6 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
 
 import java.util.List;
 
@@ -37,49 +36,51 @@ public class MainPage extends Page {
     private List<WebElement> shoutContainerText;
 
 
-    public String getShoutContainerText(int shoutNumber){
+    public int getShoutContainerText(){
 
-        try{
-            if(!( (shoutNumber < this.shoutContainerText.size()) && (shoutNumber>=0) )){
-                Assert.fail(">>>>> Shout number out of range!!!");
+        try {
+            int iii = 0;
+            for(WebElement elementFromList : this.shoutContainerText) {
+                iii++;
+                System.out.println("shoutContainerText no." + iii + " : >>>");
+                System.out.println(elementFromList.getText());
+                System.out.println("<<< End of shoutContainerText");
             }
-        }catch (Exception e){
-            System.out.println("Something wrong with shoutNumber");
-            e.getStackTrace();
-        }
+            return this.shoutContainerText.size();
 
-        try{
-            System.out.println("shoutContainerText: >>>");
-            System.out.println(this.shoutContainerText.get(shoutNumber).getText());
-            System.out.println("<<< End of shoutContainerText");
-
-            return this.shoutContainerText.get(shoutNumber).getText();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
-            return "Can not get shoutContainerText [NOK]";
+            return this.shoutContainerText.size();
         }
+
     }
 
-//    // boolean - to use with assert
-//    public boolean checkTextVisibilityInPageSource(String text){
-//        try
-//        {
-//            System.out.println("Searching... >>>" + text + "<<<");
-//            String bodyContent = this.jobOfferDetailsList.getText();
-//
-//            return bodyContent.contains(text);
-//
-//        }
-//        catch (Exception e)
-//        {
-//            System.out.println("Element >>>" + text + "<<< found: false [NOK]");
-//            e.printStackTrace();
-//            return false;
-//        }
-//
-//    }
+
+    public boolean printShoutContainerWithText(String text){
+
+        boolean matchFound = false;
+        try {
+            for(WebElement elementFromList : this.shoutContainerText) {
+
+                System.out.println("Searching in shouts... >>>" + text + "<<<");
+                String bodyContent = elementFromList.getText();
+
+                if(bodyContent.contains(text)){
+
+                    System.out.println("shoutContainerText with text " + text + ": >>>");
+                    System.out.println(elementFromList.getText());
+                    System.out.println("<<< End of shoutContainerText");
+                    matchFound = true;
+                }
+            }
+            return matchFound;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
 
 
     public MainPage(WebDriver driver)

@@ -27,16 +27,16 @@ public class TestMainTasks
     public static WebDriver driver;
 
     //from Jenkins
-//    private String envLoginPage = System.getenv("LOGIN_PAGE");
-//    private String envLoginLogin = System.getenv("LOGIN_LOGIN");
-//    private String envLoginPassword = System.getenv("LOGIN_PASSWORD");
-//    private int envTimeoutIsAt = Integer.parseInt(System.getenv("TEST_TIMEOUT"));
+    private String envLoginPage = System.getenv("LOGIN_PAGE");
+    private String envLoginLogin = System.getenv("LOGIN_LOGIN");
+    private String envLoginPassword = System.getenv("LOGIN_PASSWORD");
+    private int envTimeoutIsAt = Integer.parseInt(System.getenv("TEST_TIMEOUT"));
 
     //from here
-    private String envLoginPage = "https://primera.e-sim.org/";
-    private String envLoginLogin = "sledzik";
-    private String envLoginPassword = "f@ckinglong";
-    private int envTimeoutIsAt = 60;
+//    private String envLoginPage = "https://primera.e-sim.org/";
+//    private String envLoginLogin = "sledzik";
+//    private String envLoginPassword = "luk@rn0720";
+//    private int envTimeoutIsAt = 60;
 
     // Page Objects
     private BasePage basePage;
@@ -74,7 +74,7 @@ public class TestMainTasks
     {
         return new Object[][]{
                 {1, envLoginPage, "chrome"},
-                //{2, envLoginPage, "firefox"},
+                {2, envLoginPage, "firefox"},
         };
     }
 
@@ -138,72 +138,72 @@ public class TestMainTasks
 
         Assert.assertTrue(mainPage.isAt(envTimeoutIsAt), "----------Log in fail - you are not on MainPage");
 
-        mainPage.getShoutContainerText(0);
+        // check shouts
+        System.out.println("Visible shouts count: " + mainPage.getShoutContainerText());
 
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
-
-
-
+        System.out.println("Shout(s) with pattern found: " + mainPage.printShoutContainerWithText("Staff Team"));
 
     }
 
     @Test(dataProvider="getData", priority=2, dependsOnMethods = { "loginCorrect" })
     public void work(int p1, String p2, String p3) {
-//        loginCorrect(p1, p2, p3);
-//
-//        try {
-//            mainPage.setWorkTaskButton();
-//        }
-//        catch (Exception e)
-//        {
-//            mainPage.setMenuMyPlacesButton()
-//                    .setMenuWorkButton();
-//        }
-//
-//
-//        Assert.assertTrue(workPage.isAt(envTimeoutIsAt), "----------Error - you are not on WorkPage");
-//
-//        if(!workPage.workCheck())
-//        {
-//            workPage.setWorkButton();
-//            Assert.assertTrue(workPage.isAt(envTimeoutIsAt), "----------Error - you are not on WorkPage");
-//        }
-//
-//        Assert.assertTrue(workPage.workCheck(), "----------Error - Can not read production results after work");
-//
-//        // just for chrome
-//        if(p1==1) {
-//            takeScreenshot();
-//        }
+        loginCorrect(p1, p2, p3);
+
+        try {
+            mainPage.setWorkTaskButton();
+        }
+        catch (Exception e)
+        {
+            mainPage.setMenuMyPlacesButton()
+                    .setMenuWorkButton();
+        }
+
+
+        Assert.assertTrue(workPage.isAt(envTimeoutIsAt), "----------Error - you are not on WorkPage");
+
+        if(!workPage.workCheck())
+        {
+            workPage.setWorkButton();
+            Assert.assertTrue(workPage.isAt(envTimeoutIsAt), "----------Error - you are not on WorkPage");
+        }
+
+        Assert.assertTrue(workPage.workCheck(), "----------Error - Can not read production results after work");
+
+        // just for chrome
+        if(p1==1) {
+            takeScreenshot();
+        }
 
 
     }
 
     @Test(dataProvider="getData", priority=1, dependsOnMethods = { "loginCorrect" })
     public void train(int p1, String p2, String p3) {
-//        loginCorrect(p1, p2, p3);
-//
-//        try {
-//            mainPage.setTrainTaskButton();
-//        }
-//        catch (Exception e)
-//        {
-//            mainPage.setMenuMyPlacesButton()
-//                    .setMenuTrainButton();
-//        }
-//
-//
-//        Assert.assertTrue(trainPage.isAt(envTimeoutIsAt), "----------Error - you are not on TrainPage");
-//
-//
-//
-//        if(!trainPage.trainCheck())
-//        {
-//            trainPage.setTrainButton();
-//            Assert.assertTrue(trainPage.isAt(envTimeoutIsAt), "----------Error - you are not on TrainPage");
-//        }
-//
-//        Assert.assertTrue(trainPage.trainCheck(), "----------Error - Can not read train countdown after training");
+        loginCorrect(p1, p2, p3);
+
+        try {
+            mainPage.setTrainTaskButton();
+        }
+        catch (Exception e)
+        {
+            mainPage.setMenuMyPlacesButton()
+                    .setMenuTrainButton();
+        }
+
+
+        Assert.assertTrue(trainPage.isAt(envTimeoutIsAt), "----------Error - you are not on TrainPage");
+
+
+
+        if(!trainPage.trainCheck())
+        {
+            trainPage.setTrainButton();
+            Assert.assertTrue(trainPage.isAt(envTimeoutIsAt), "----------Error - you are not on TrainPage");
+        }
+
+        Assert.assertTrue(trainPage.trainCheck(), "----------Error - Can not read train countdown after training");
 
     }
 

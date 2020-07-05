@@ -28,7 +28,7 @@ public class TestLogIn
 //    //from here
     private String envLoginPage = "https://primera.e-sim.org/";
     private String envLoginLogin = "sledzik";
-    private String envLoginPassword = "luk@rn0220";
+    private String envLoginPassword = "luk@rn0720";
     private int envTimeoutIsAt = 60;
 
     // Page Objects
