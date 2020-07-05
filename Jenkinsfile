@@ -2,6 +2,7 @@ pipeline {
     agent any
     tools {
             jdk 'jdk11'
+            maven 'myMavenRep'
         }
 
     stages {
@@ -36,30 +37,26 @@ pipeline {
         stage('Compile Stage') {
                 steps {
                     echo 'Starting Compile..'
-                    withMaven (maven : 'myMavenRep'){
-                        bat 'mvn clean compile'
-                    }
+                    bat 'mvn clean compile'
                 }
         }
 
         stage('Testing Stage1') {
                  steps {
                      echo 'Starting Testing..'
-                     withMaven (maven : 'myMavenRep'){
-                         bat 'mvn test'
-                     }
+                     bat 'mvn test'
                  }
         }
 
 
-        stage('Deploy Stage') {
-                steps {
-                    echo 'Starting Deploy.. - empty for now'
+        //stage('Deploy Stage') {
+                //steps {
+                    //echo 'Starting Deploy.. - empty for now'
                     //withMaven (maven : 'myMavenRep'){
                         //bat 'mvn deploy'
                     //}
-                }
-        }
+                //}
+        //}
 
         stage('Tear down stage') {
             steps {
