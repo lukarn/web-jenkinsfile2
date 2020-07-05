@@ -95,8 +95,8 @@ public class TestLogIn
     public void loginIncorrectUser(int p1, String p2, String p3) {
         launch(p1, p2, p3);
 
-
-        basePage.setLoginInput("IncorrectUser")
+        basePage.setLoginButton()
+                .setLoginInput("IncorrectUser")
                 .setPasswordInput(envLoginPassword)
                 .setZalogujButton();
 
@@ -107,7 +107,8 @@ public class TestLogIn
     public void loginIncorrectUserAndPassword(int p1, String p2, String p3) {
         launch(p1, p2, p3);
 
-        basePage.setLoginInput("IncorrectUser")
+        basePage.setLoginButton()
+                .setLoginInput("IncorrectUser")
                 .setPasswordInput("IncorrectPassword")
                 .setZalogujButton();
 
@@ -118,7 +119,8 @@ public class TestLogIn
     public void loginNoUserAndPassword(int p1, String p2, String p3) {
         launch(p1, p2, p3);
 
-        basePage.setLoginInput("")
+        basePage.setLoginButton()
+                .setLoginInput("")
                 .setPasswordInput("")
                 .setZalogujButton();
 
@@ -129,7 +131,8 @@ public class TestLogIn
     public void loginNoPassword(int p1, String p2, String p3) {
         launch(p1, p2, p3);
 
-        basePage.setLoginInput(envLoginLogin)
+        basePage.setLoginButton()
+                .setLoginInput(envLoginLogin)
                 .setPasswordInput("")
                 .setZalogujButton();
 
@@ -140,7 +143,8 @@ public class TestLogIn
     public void loginIncorrectPassword(int p1, String p2, String p3) {
         launch(p1, p2, p3);
 
-        basePage.setLoginInput(envLoginLogin)
+        basePage.setLoginButton()
+                .setLoginInput(envLoginLogin)
                 .setPasswordInput("IncorrectPassword")
                 .setZalogujButton();
 
@@ -151,7 +155,8 @@ public class TestLogIn
     public void loginCorrect(int p1, String p2, String p3) {
         launch(p1, p2, p3);
 
-        basePage.setLoginInput(envLoginLogin)
+        basePage.setLoginButton()
+                .setLoginInput(envLoginLogin)
                 .setPasswordInput(envLoginPassword)
                 .setZalogujButton();
 

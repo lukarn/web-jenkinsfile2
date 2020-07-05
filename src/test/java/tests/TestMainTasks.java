@@ -74,7 +74,7 @@ public class TestMainTasks
     {
         return new Object[][]{
                 {1, envLoginPage, "chrome"},
-                {2, envLoginPage, "firefox"},
+                //{2, envLoginPage, "firefox"},
         };
     }
 
@@ -131,8 +131,6 @@ public class TestMainTasks
     public void loginCorrect(int p1, String p2, String p3) {
         launch(p1, p2, p3);
 
-//        Assert.fail(">>>>>>>>>>>>>>>>>>>>>>>>>test fail");
-
         basePage.setLoginButton()
                 .setLoginInput(envLoginLogin)
                 .setPasswordInput(envLoginPassword)
@@ -140,61 +138,72 @@ public class TestMainTasks
 
         Assert.assertTrue(mainPage.isAt(envTimeoutIsAt), "----------Log in fail - you are not on MainPage");
 
+        mainPage.getShoutContainerText(0);
+
+
+
+
+
+
     }
 
-    @Test(dataProvider="getData", dependsOnMethods = { "loginCorrect" })
+    @Test(dataProvider="getData", priority=2, dependsOnMethods = { "loginCorrect" })
     public void work(int p1, String p2, String p3) {
-        loginCorrect(p1, p2, p3);
-
-        try {
-            mainPage.setWorkTaskButton();
-        }
-        catch (Exception e)
-        {
-            mainPage.setMenuMyPlacesButton()
-                    .setMenuWorkButton();
-        }
-
-
-        Assert.assertTrue(workPage.isAt(envTimeoutIsAt), "----------Error - you are not on WorkPage");
-
-        if(!workPage.workCheck())
-        {
-            workPage.setWorkButton();
-            Assert.assertTrue(workPage.isAt(envTimeoutIsAt), "----------Error - you are not on WorkPage");
-        }
-
-        Assert.assertTrue(workPage.workCheck(), "----------Error - Can not read production results after work");
+//        loginCorrect(p1, p2, p3);
+//
+//        try {
+//            mainPage.setWorkTaskButton();
+//        }
+//        catch (Exception e)
+//        {
+//            mainPage.setMenuMyPlacesButton()
+//                    .setMenuWorkButton();
+//        }
+//
+//
+//        Assert.assertTrue(workPage.isAt(envTimeoutIsAt), "----------Error - you are not on WorkPage");
+//
+//        if(!workPage.workCheck())
+//        {
+//            workPage.setWorkButton();
+//            Assert.assertTrue(workPage.isAt(envTimeoutIsAt), "----------Error - you are not on WorkPage");
+//        }
+//
+//        Assert.assertTrue(workPage.workCheck(), "----------Error - Can not read production results after work");
+//
+//        // just for chrome
+//        if(p1==1) {
+//            takeScreenshot();
+//        }
 
 
     }
 
-    @Test(dataProvider="getData", dependsOnMethods = { "loginCorrect" })
+    @Test(dataProvider="getData", priority=1, dependsOnMethods = { "loginCorrect" })
     public void train(int p1, String p2, String p3) {
-        loginCorrect(p1, p2, p3);
-
-        try {
-            mainPage.setTrainTaskButton();
-        }
-        catch (Exception e)
-        {
-            mainPage.setMenuMyPlacesButton()
-                    .setMenuTrainButton();
-        }
-
-
-        Assert.assertTrue(trainPage.isAt(envTimeoutIsAt), "----------Error - you are not on TrainPage");
-
-
-
-        if(!trainPage.trainCheck())
-        {
-            trainPage.setTrainButton();
-            Assert.assertTrue(trainPage.isAt(envTimeoutIsAt), "----------Error - you are not on TrainPage");
-        }
-
-        Assert.assertTrue(trainPage.trainCheck(), "----------Error - Can not read train countdown after training");
-
+//        loginCorrect(p1, p2, p3);
+//
+//        try {
+//            mainPage.setTrainTaskButton();
+//        }
+//        catch (Exception e)
+//        {
+//            mainPage.setMenuMyPlacesButton()
+//                    .setMenuTrainButton();
+//        }
+//
+//
+//        Assert.assertTrue(trainPage.isAt(envTimeoutIsAt), "----------Error - you are not on TrainPage");
+//
+//
+//
+//        if(!trainPage.trainCheck())
+//        {
+//            trainPage.setTrainButton();
+//            Assert.assertTrue(trainPage.isAt(envTimeoutIsAt), "----------Error - you are not on TrainPage");
+//        }
+//
+//        Assert.assertTrue(trainPage.trainCheck(), "----------Error - Can not read train countdown after training");
 
     }
 
