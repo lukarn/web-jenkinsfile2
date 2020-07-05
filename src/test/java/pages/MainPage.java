@@ -37,10 +37,10 @@ public class MainPage extends Page {
     private List<WebElement> shoutContainerText;
 
 
-    public void getShoutContainerText(int shoutNumber){
+    public String getShoutContainerText(int shoutNumber){
 
         try{
-            if(!( (shoutNumber < this.shoutContainerText.size()) && (shoutNumber>0) )){
+            if(!( (shoutNumber < this.shoutContainerText.size()) && (shoutNumber>=0) )){
                 Assert.fail(">>>>> Shout number out of range!!!");
             }
         }catch (Exception e){
@@ -50,14 +50,15 @@ public class MainPage extends Page {
 
         try{
             System.out.println("shoutContainerText: >>>");
-            System.out.println(this.shoutContainerText.get(0).getText());
+            System.out.println(this.shoutContainerText.get(shoutNumber).getText());
             System.out.println("<<< End of shoutContainerText");
 
+            return this.shoutContainerText.get(shoutNumber).getText();
         }
         catch (Exception e)
         {
-            System.out.println("Can not get shoutContainerText [NOK]");
             e.printStackTrace();
+            return "Can not get shoutContainerText [NOK]";
         }
     }
 

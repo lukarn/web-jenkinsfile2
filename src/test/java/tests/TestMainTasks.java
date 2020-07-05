@@ -27,16 +27,16 @@ public class TestMainTasks
     public static WebDriver driver;
 
     //from Jenkins
-    private String envLoginPage = System.getenv("LOGIN_PAGE");
-    private String envLoginLogin = System.getenv("LOGIN_LOGIN");
-    private String envLoginPassword = System.getenv("LOGIN_PASSWORD");
-    private int envTimeoutIsAt = Integer.parseInt(System.getenv("TEST_TIMEOUT"));
+//    private String envLoginPage = System.getenv("LOGIN_PAGE");
+//    private String envLoginLogin = System.getenv("LOGIN_LOGIN");
+//    private String envLoginPassword = System.getenv("LOGIN_PASSWORD");
+//    private int envTimeoutIsAt = Integer.parseInt(System.getenv("TEST_TIMEOUT"));
 
-//    //from here
-//    private String envLoginPage = "https://primera.e-sim.org/";
-//    private String envLoginLogin = "sledzik";
-//    private String envLoginPassword = "luk@rn0220";
-//    private int envTimeoutIsAt = 60;
+    //from here
+    private String envLoginPage = "https://primera.e-sim.org/";
+    private String envLoginLogin = "sledzik";
+    private String envLoginPassword = "f@ckinglong";
+    private int envTimeoutIsAt = 60;
 
     // Page Objects
     private BasePage basePage;
