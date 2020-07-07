@@ -1,9 +1,9 @@
-web test exercises (Jenkins with github, env. variables)
-https://youtu.be/x0FrZZblecM
+web test exercises (Jenkins with github, env. variables, docker, Jenkinsfile)
+https://youtu.be/ynDethoyssU
 env. variables directly in Jenkins job
 
-launch by Maven: esim\pom.xml (listener with screenshots on test fail)
-launch by testng: esim\src\test\resources\testng.xml (no screenshots on fail)
+launch by Maven: esimjenkinsfile\pom.xml (listener with screenshots on test fail)
+launch by testng: esimjenkinsfile\src\test\resources\testng.xml (no screenshots on fail)
 
 important files:
 project_dir\pom.xml
