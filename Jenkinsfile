@@ -1,8 +1,8 @@
 //variables
-def network="jenkins-esim-build${env.BUILD_NUMBER}"
-def seleniumHub="selenium-hub-esim-build${env.BUILD_NUMBER}"
-def chrome="chrome-esim-build${env.BUILD_NUMBER}"
-def firefox="firefox-esim-build${env.BUILD_NUMBER}"
+def network="jenkins-esim-build${env.BUILD_TAG}"
+def seleniumHub="selenium-hub-esim-build${env.BUILD_TAG}"
+def chrome="chrome-esim-build${env.BUILD_TAG}"
+def firefox="firefox-esim-build${env.BUILD_TAG}"
 //def testVar="build-no-${env.BUILD_NUMBER}"
 //def firefox='firefox-${env.BUILD_NUMBER}'
 //def containertest='conatinertest-${env.BUILD_NUMBER}'
