@@ -82,6 +82,7 @@ pipeline {
 
         stage('Tear down stage') {
             steps {
+                echo 'Starting Tear down..'
                 //bat 'docker-compose down'
                 //bat 'docker system prune -f'
             }
