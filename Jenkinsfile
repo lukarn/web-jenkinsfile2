@@ -45,7 +45,9 @@ pipeline {
 
                     bat 'docker version'
 
-                    println("Running job ${env.JOB_NAME}")
+                    println("JOB_NAME: ${env.JOB_NAME}")
+                    println("JOB_BASE_NAME: ${env.JOB_BASE_NAME}")
+                    println("BUILD_TAG: ${env.BUILD_TAG}")
                     //println("debug test: ${testVar}")
                 }
 
