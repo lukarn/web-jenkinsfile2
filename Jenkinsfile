@@ -46,7 +46,7 @@ pipeline {
                     bat 'docker version'
 
                     println("Running job ${env.JOB_NAME}")
-                    println("debug test: ${testVar}")
+                    //println("debug test: ${testVar}")
                 }
 
                 //bat 'docker-compose up -d' // Docker Selenium
