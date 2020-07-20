@@ -51,9 +51,9 @@ pipeline {
                 //bat 'docker-compose up -d' // Docker Selenium
 
                 bat "docker network create ${network}"
-                bat "docker run -d -p 4444:4444 --name ${seleniumHub} --network ${network} selenium/hub:3.141.59-20200525"
-                bat "docker run -d -e HUB_PORT_4444_TCP_ADDR=${seleniumHub} -e HUB_PORT_4444_TCP_PORT=4444 --network ${network} --name ${chrome} selenium/node-chrome:3.141.59-20200525"
-                bat "docker run -d -e HUB_PORT_4444_TCP_ADDR=${seleniumHub} -e HUB_PORT_4444_TCP_PORT=4444 --network ${network} --name ${firefox} selenium/node-firefox:3.141.59-20200525"
+                bat "docker run -d -p 4444:4444 --shm-size=2g --name ${seleniumHub} --network ${network} selenium/hub:3.141.59-20200525"
+                bat "docker run -d -e HUB_PORT_4444_TCP_ADDR=${seleniumHub} -e HUB_PORT_4444_TCP_PORT=4444 --shm-size=1g --network ${network} --name ${chrome} selenium/node-chrome:3.141.59-20200525"
+                bat "docker run -d -e HUB_PORT_4444_TCP_ADDR=${seleniumHub} -e HUB_PORT_4444_TCP_PORT=4444 --shm-size=1g --network ${network} --name ${firefox} selenium/node-firefox:3.141.59-20200525"
 
             }
         }
@@ -87,6 +87,11 @@ pipeline {
                 echo 'Starting Tear down..'
                 //bat 'docker-compose down'
                 //bat 'docker system prune -f'
+
+                bat "docker rm -vf ${chrome}"
+                bat "docker rm -vf ${firefox}"
+                bat "docker rm -vf ${seleniumHub}"
+                bat "docker network rm ${network}"
             }
         }
 
