@@ -1,3 +1,10 @@
+//variables
+def network='jenkins-${BUILD_NUMBER}'
+def seleniumHub='selenium-hub-${BUILD_NUMBER}'
+def chrome='chrome-${BUILD_NUMBER}'
+def firefox='firefox-${BUILD_NUMBER}'
+def containertest='conatinertest-${BUILD_NUMBER}'
+
 pipeline {
     agent any
     tools {
@@ -39,7 +46,13 @@ pipeline {
                     println("Running job ${env.JOB_NAME}")
                 }
 
-                bat 'docker-compose up -d' // Docker Selenium
+                //bat 'docker-compose up -d' // Docker Selenium
+
+                bat "docker network create ${network}"
+                bat "docker run -d -p 4444:4444 --name ${seleniumHub} --network ${network} selenium/hub:3.141.59-20200525"
+                bat "docker run -d -e HUB_PORT_4444_TCP_ADDR=${seleniumHub} -e HUB_PORT_4444_TCP_PORT=4444 --network ${network} --name ${chrome} selenium/node-chrome:3.141.59-20200525"
+                bat "docker run -d -e HUB_PORT_4444_TCP_ADDR=${seleniumHub} -e HUB_PORT_4444_TCP_PORT=4444 --network ${network} --name ${firefox} selenium/node-firefox:3.141.59-20200525"
+
             }
         }
 
@@ -69,8 +82,8 @@ pipeline {
 
         stage('Tear down stage') {
             steps {
-                bat 'docker-compose down'
-                bat 'docker system prune -f'
+                //bat 'docker-compose down'
+                //bat 'docker system prune -f'
             }
         }
 
