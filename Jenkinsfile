@@ -3,6 +3,7 @@ def network='jenkins-esim'
 def seleniumHub='selenium-hub-esim'
 def chrome='chrome-esim'
 def firefox='firefox-esim'
+def testVar=${env.BUILD_NUMBER}
 //def firefox='firefox-${env.BUILD_NUMBER}'
 //def containertest='conatinertest-${env.BUILD_NUMBER}'
 
@@ -45,12 +46,12 @@ pipeline {
                     bat 'docker version'
 
                     println("Running job ${env.JOB_NAME}")
-                    println("debug network: ${network}")
+                    println("debug test: ${testVar}")
                 }
 
                 //bat 'docker-compose up -d' // Docker Selenium
 
-                bat "docker network create ${network}"
+                bat "dockerrrrrrrrr network create ${network}"
                 bat "docker run -d -p 4444:4444 --shm-size=2g --name ${seleniumHub} --network ${network} selenium/hub:3.141.59-20200525"
                 bat "docker run -d -e HUB_PORT_4444_TCP_ADDR=${seleniumHub} -e HUB_PORT_4444_TCP_PORT=4444 --shm-size=1g --network ${network} --name ${chrome} selenium/node-chrome:3.141.59-20200525"
                 bat "docker run -d -e HUB_PORT_4444_TCP_ADDR=${seleniumHub} -e HUB_PORT_4444_TCP_PORT=4444 --shm-size=1g --network ${network} --name ${firefox} selenium/node-firefox:3.141.59-20200525"
