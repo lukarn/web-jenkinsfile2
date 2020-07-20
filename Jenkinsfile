@@ -1,9 +1,10 @@
 //variables
-def network='jenkins-"${env.JOB_NAME}"'
-def seleniumHub='selenium-hub-${env.BUILD_NUMBER}'
-def chrome='chrome-${env.BUILD_NUMBER}'
-def firefox='firefox-${env.BUILD_NUMBER}'
-def containertest='conatinertest-${env.BUILD_NUMBER}'
+def network='jenkins-esim'
+def seleniumHub='selenium-hub-esim'
+def chrome='chrome-esim'
+def firefox='firefox-esim'
+//def firefox='firefox-${env.BUILD_NUMBER}'
+//def containertest='conatinertest-${env.BUILD_NUMBER}'
 
 pipeline {
     agent any
