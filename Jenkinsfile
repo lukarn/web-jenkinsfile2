@@ -3,7 +3,7 @@ def network='jenkins-esim'
 def seleniumHub='selenium-hub-esim'
 def chrome='chrome-esim'
 def firefox='firefox-esim'
-def testVar="${env.BUILD_NUMBER}"
+def testVar="build-no-${env.BUILD_NUMBER}"
 //def firefox='firefox-${env.BUILD_NUMBER}'
 //def containertest='conatinertest-${env.BUILD_NUMBER}'
 
