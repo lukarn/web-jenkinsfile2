@@ -1,5 +1,5 @@
 //variables
-def network='jenkins-${env.BUILD_NUMBER}'
+def network='jenkins-${env.JOB_NAME}'
 def seleniumHub='selenium-hub-${env.BUILD_NUMBER}'
 def chrome='chrome-${env.BUILD_NUMBER}'
 def firefox='firefox-${env.BUILD_NUMBER}'
