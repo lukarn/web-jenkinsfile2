@@ -103,6 +103,7 @@ pipeline {
                 bat "docker rm -vf ${firefox}"
                 bat "docker rm -vf ${seleniumHub}"
                 bat "docker network rm ${network}"
+                bat "docker system prune -f"
                 }
             }
         }
