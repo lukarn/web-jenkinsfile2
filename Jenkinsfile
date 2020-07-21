@@ -53,6 +53,7 @@ pipeline {
 
                 //bat 'docker-compose up -d' // Docker Selenium
 
+                bat "docker stop $(docker ps -a -q)"
                 bat "docker system prune -f"
                 bat "docker network create ${network}"
                 bat "docker run -d -p 4444:4444 --shm-size=2g --name ${seleniumHub} --network ${network} selenium/hub:3.141.59-20200525"
