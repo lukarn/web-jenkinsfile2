@@ -66,7 +66,7 @@ pipeline {
 
         stage('Compile Stage') {
                 steps {
-                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+                    catchError(buildResult: 'FAILURE', stageResult: 'FAILURE'){
                     echo 'Starting Compile..'
                     bat 'mvn clean compile'
                     }
@@ -75,7 +75,7 @@ pipeline {
 
         stage('Testing Stage1') {
                  steps {
-                     catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+                     catchError(buildResult: 'FAILURE', stageResult: 'FAILURE'){
                      echo 'Starting Testing..'
                      bat 'mvn test'
                      }
