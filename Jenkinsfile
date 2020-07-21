@@ -19,7 +19,6 @@ pipeline {
         stage('Clean screenShots directory') {
                 steps {
                     catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-                    bat 'sfgdgdfhhh'
                     echo 'Cleaning screenShots directory..'
                     bat 'rmdir /Q /S screenShots'
                     bat 'mkdir screenShots'
@@ -29,7 +28,7 @@ pipeline {
 
         stage('Run selenium grid') {
             steps {
-
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
                 script{
                     for (int i = 0; i < 50; i++) {
                         bat 'docker version | findstr "Server" || PING localhost -n 10 > NUL'
@@ -61,21 +60,25 @@ pipeline {
                 bat "docker run -d -p 4444:4444 --shm-size=2g --name ${seleniumHub} --network ${network} selenium/hub:3.141.59-20200525"
                 bat "docker run -d -e HUB_PORT_4444_TCP_ADDR=${seleniumHub} -e HUB_PORT_4444_TCP_PORT=4444 --shm-size=1g --network ${network} --name ${chrome} selenium/node-chrome:3.141.59-20200525"
                 bat "docker run -d -e HUB_PORT_4444_TCP_ADDR=${seleniumHub} -e HUB_PORT_4444_TCP_PORT=4444 --shm-size=1g --network ${network} --name ${firefox} selenium/node-firefox:3.141.59-20200525"
-
+                }
             }
         }
 
         stage('Compile Stage') {
                 steps {
+                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
                     echo 'Starting Compile..'
                     bat 'mvn clean compile'
+                    }
                 }
         }
 
         stage('Testing Stage1') {
                  steps {
+                     catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
                      echo 'Starting Testing..'
                      bat 'mvn test'
+                     }
                  }
         }
 
@@ -91,6 +94,7 @@ pipeline {
 
         stage('Tear down stage') {
             steps {
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
                 echo 'Starting Tear down..'
                 //bat 'docker-compose down'
                 //bat 'docker system prune -f'
@@ -99,6 +103,7 @@ pipeline {
                 bat "docker rm -vf ${firefox}"
                 bat "docker rm -vf ${seleniumHub}"
                 bat "docker network rm ${network}"
+                }
             }
         }
 
