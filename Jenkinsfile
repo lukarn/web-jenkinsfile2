@@ -28,7 +28,7 @@ pipeline {
 
         stage('Run selenium grid') {
             steps {
-                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE'){
                 script{
                     for (int i = 0; i < 50; i++) {
                         bat 'docker version | findstr "Server" || PING localhost -n 10 > NUL'
@@ -45,7 +45,7 @@ pipeline {
                     //bat 'docker version | findstr "Server" & if %errorlevel% NEQ 0 (echo NOOOOOK ) Else ( Echo OKOKOK )'
                     //bat 'if %errorlevel% NEQ 0 (timeout 10) Else ( Echo OKOKOK )'
 
-                    bat 'docker version'
+                    bat 'dockerrrrrrrrr version'
 
                     println("JOB_NAME: ${env.JOB_NAME}")
                     println("JOB_BASE_NAME: ${env.JOB_BASE_NAME}")
@@ -94,7 +94,7 @@ pipeline {
 
         stage('Tear down stage') {
             steps {
-                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE'){
                 echo 'Starting Tear down..'
                 //bat 'docker-compose down'
                 //bat 'docker system prune -f'
