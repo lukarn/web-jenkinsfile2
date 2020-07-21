@@ -1,5 +1,5 @@
 //variables
-def network="jenkins-${env.BUILD_TAG}"
+def network="network-${env.BUILD_TAG}"
 def seleniumHub="selenium-hub-${env.BUILD_TAG}"
 def chrome="chrome-${env.BUILD_TAG}"
 def firefox="firefox-${env.BUILD_TAG}"
