@@ -45,7 +45,7 @@ pipeline {
                     //bat 'docker version | findstr "Server" & if %errorlevel% NEQ 0 (echo NOOOOOK ) Else ( Echo OKOKOK )'
                     //bat 'if %errorlevel% NEQ 0 (timeout 10) Else ( Echo OKOKOK )'
 
-                    bat 'dockerrrrrrrrr version'
+                    bat 'docker version'
 
                     println("JOB_NAME: ${env.JOB_NAME}")
                     println("JOB_BASE_NAME: ${env.JOB_BASE_NAME}")
